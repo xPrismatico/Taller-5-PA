@@ -1,0 +1,124 @@
+@startuml
+left to right direction
+skin rose
+
+class Usuario {
+-rut: String
+-nombre: String
+-apellido: String
+-contrasenia: String
+
++Usuario(String rut, String nombre, String apellido, String contrasenia)
++getRut()
++getNombre()
++getApelldo()
++getContrasenia()
+}
+
+class Libro {
+-ISBN: String
+-nombreLibro: String
+-autor:String
+-categoria: String
+-cantidadPaginas: int
+-stock: int
+
++Libro(String ISBN, String nombreLibro, String autor, String categoria, int cantidadPaginas, int stock)
++setStock()
++getStock()
++getISBN()
++getNombreLibro()
++getAutor()
++getCategoria()
++getCantidadPagina()
+}
+
+class Transaccion {
+-rutVendedor: String
+-nombre: String
+-apellido: String
+-ISBNLibro: String
+-nombreLibro: String
+-tipoTransaccion: String
+
++Transaccion(String rutVendedor, String nombre, String apellido, ISBNLibro, String nombreLibro, String tipoTransaccion)
++setISBN()
++getISBN()
++getRutVendedor()
++getNombre()
++getApelldo()
++getNombreLibro()
++getTipoTransaccion()
+}
+
+class transaccionLista {
+Transaccion
+}
+
+class libroLista {
+libros
+}
+
+
+class Inicio {
++Inicio(List<Usuario> usuarioLista,List<Libro> libroLista,List<Usuario> usuarioIniciado,List<Transaccion> transaccionLista)
+}
+
+class MenuPrincipal {
+MenuPrincipal(List<Usuario> usuarioLista,List<Libro> libroLista,List<Usuario> usuarioIniciado,List<Transaccion> transaccionLista)
+}
+
+class BuscarLibro {
++BuscarLibro(List<Usuario> usuarioLista, List<Libro> libroLista, List<Usuario> usuarioIniciado,List<Transaccion> transaccionLista)
+}
+
+class PrestarLibro {
++PrestarLibro(List<Usuario> usuarioLista, List<Libro> libroLista, List<Usuario> usuarioIniciado, List<Transaccion> transaccionLista)
+}
+
+class DevolverLibro {
++DevolverLibro(List<Usuario> usuarioLista, List<Libro> libroLista, List<Usuario> usuarioIniciado,List<Transaccion> transaccionLista)
+}
+
+class AgregarLibro {
++AgregarLibro(List<Usuario> usuarioLista, List<Libro> libroLista, List<Usuario> usuarioIniciado,List<Transaccion> transaccionLista)
+}
+
+class SistemaImpl {
+-inicio: Inicio
+-usuarioIniciado: List<Usuario>
+-libroLista: List<Libro>
+-usuarioLista: List<Usuario>
+-transaccionLista: List<Transaccion>
+
++SistemaImpl()
++leerArchivoLibros(): void
++leerArchivoUsuario(): void
+}
+
+interface Sistema {
+startProgram(): void
+}
+
+Usuario "1"--"1" Transaccion: genera >
+transaccionLista "1"--"*" Transaccion: contiene >
+Transaccion "1"--"*" Libro: tiene >
+Usuario "1"--"1"libroLista: gestiona >
+libroLista "1"--"*" Libro: contiene >
+
+
+note "El usuario gestiona el inventario\nprestando, devolviendo, buscando,\no agregando libros" as n1
+n1 -- Usuario
+
+Sistema <|.. SistemaImpl: implementa
+SistemaImpl --> Usuario
+
+Usuario -- Inicio: ingresa >
+Inicio -- MenuPrincipal: >
+MenuPrincipal -- BuscarLibro: tiene >
+MenuPrincipal -- PrestarLibro: tiene >
+MenuPrincipal -- DevolverLibro: tiene >
+MenuPrincipal -- AgregarLibro: tiene >
+
+
+@enduml

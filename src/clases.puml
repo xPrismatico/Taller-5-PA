@@ -1,0 +1,174 @@
+@startuml
+left to right direction
+skin rose
+
+class Usuario {
+-rut: String
+-nombre: String
+-apellido: String
+-contrasenia: String
+
++Usuario(String rut, String nombre, String apellido, String contrasenia)
+
++getRut(): String
++getNombre(): String
++getApelldo(): String
++getContrasenia(): String
+}
+
+class Libro {
+-ISBN: String
+-nombreLibro: String
+-autor:String
+-categoria: String
+-cantidadPaginas: int
+-stock: int
+
++Libro(String ISBN, String nombreLibro, String autor, String categoria, int cantidadPaginas, int stock)
+
++setStock(): int
++getStock(): int
++getISBN(): String
++getNombreLibro(): String
++getAutor(): String
++getCategoria(): String
++getCantidadPagina(): int
+}
+
+class Transaccion {
+-rutVendedor: String
+-nombre: String
+-apellido: String
+-ISBNLibro: String
+-nombreLibro: String
+-tipoTransaccion: String
+
++Transaccion(String rutVendedor, String nombre, String apellido, ISBNLibro, String nombreLibro, String tipoTransaccion)
+
++setISBN(): String
++getISBN(): String
++getRutVendedor(): String
++getNombre(): String
++getApelldo(): String
++getNombreLibro(): String
++getTipoTransaccion(): String
+}
+
+class Inicio {
+-usuarioLista: List<Usuario>
+-libroLista: List<Libro>
+-usuarioIniciado: List<Usuario>
+-transaccionLista: List<Transaccion>
+
+-Iniciar(List<Usuario> usuarioLista, List<Libro> libroLista, List<Usuario> usuarioIniciado): void
+-generarRegistro(List<Transaccion> transaccionLista): void
+-escribirArchivoLibros(List<Libro> libroLista): void
+-clear():void
+-cerrar(): void
+
++Inicio(List<Usuario> usuarioLista,List<Libro> libroLista,List<Usuario> usuarioIniciado,List<Transaccion> transaccionLista)
+}
+
+class MenuPrincipal {
+-usuarioLista: List<Usuario>
+-libroLista: List<Libro>
+-usuarioIniciado: List<Usuario>
+-transaccionLista: List<Transaccion>
+
+-cerrarSesion(List<Usuario> usuarioLista, List<Libro> libroLista, List<Usuario> usuarioIniciado): void
+-buscarLibro(List<Usuario> usuarioLista, List<Libro> libroLista, List<Usuario> usuarioIniciado): void
+-prestarLibro(List<Usuario> usuarioLista, List<Libro> libroLista, List<Usuario> usuarioIniciado): void
+-agregarLibro(List<Usuario> usuarioLista, List<Libro> libroLista, List<Usuario> usuarioIniciado): void
+-devolverLibro(List<Usuario> usuarioLista, List<Libro> libroLista, List<Usuario> usuarioIniciado): void
+
++MenuPrincipal(List<Usuario> usuarioLista,List<Libro> libroLista,List<Usuario> usuarioIniciado,List<Transaccion> transaccionLista)
+}
+
+class BuscarLibro {
+-usuarioLista: List<Usuario>
+-libroLista: List<Libro>
+-usuarioIniciado: List<Usuario>
+-transaccionLista: List<Transaccion>
+
+-volverMenu(List<Usuario> usuarioLista, List<Libro> libroLista, List<Usuario> usuarioIniciado): void
+-clear(): void
+-verDatosLibro(List<Libro> libroLista): void
+
++BuscarLibro(List<Usuario> usuarioLista, List<Libro> libroLista, List<Usuario> usuarioIniciado,List<Transaccion> transaccionLista)
+}
+
+class PrestarLibro {
+-usuarioLista: List<Usuario>
+-libroLista: List<Libro>
+-usuarioIniciado: List<Usuario>
+-transaccionLista: List<Transaccion>
+
+-arrendarLibro(List<Libro> libroLista,List<Usuario> usuarioIniciado,List<Transaccion> transaccionLista): void
+-volverMenu(List<Usuario> usuarioLista, List<Libro> libroLista, List<Usuario> usuarioIniciado): void
+-clear(): void
+
++PrestarLibro(List<Usuario> usuarioLista, List<Libro> libroLista, List<Usuario> usuarioIniciado, List<Transaccion> transaccionLista)
+}
+
+class DevolverLibro {
+-usuarioLista: List<Usuario>
+-libroLista: List<Libro>
+-usuarioIniciado: List<Usuario>
+-transaccionLista: List<Transaccion>
+
+-devolverLibro(List<Libro> libroLista): void
+-volverMenu(List<Usuario> usuarioLista, List<Libro> libroLista, List<Usuario> usuarioIniciado): void
+-clear(): void
+
++DevolverLibro(List<Usuario> usuarioLista, List<Libro> libroLista, List<Usuario> usuarioIniciado,List<Transaccion> transaccionLista)
+}
+
+class AgregarLibro {
+-usuarioLista: List<Usuario>
+-libroLista: List<Libro>
+-usuarioIniciado: List<Usuario>
+-transaccionLista: List<Transaccion>
+
+-agregarNuevoLibro(List<Libro> libroLista): void
+-volverMenu(List<Usuario> usuarioLista, List<Libro> libroLista, List<Usuario> usuarioIniciado): void
+-clear(): void
+
++AgregarLibro(List<Usuario> usuarioLista, List<Libro> libroLista, List<Usuario> usuarioIniciado,List<Transaccion> transaccionLista)
+}
+
+class SistemaImpl {
+-inicio: Inicio
+-usuarioIniciado: List<Usuario>
+
++SistemaImpl()
++leerArchivoLibros(): void
++leerArchivoUsuario(): void
+}
+
+interface Sistema {
+startProgram(): void
+}
+
+note "El usuario gestiona el inventario\nprestando, devolviendo, buscando,\no agregando libros" as n1
+note "Las clases Inicio, MenuPrincipal, BuscarLibro, PrestarLibro, DevolverLibro,\nAgregarLibro son formularios realizados con JFrame" as n2
+
+n1 - Usuario
+n2 - Inicio
+
+Usuario "1"--"*" Transaccion: genera >
+Transaccion "1"--"*" Libro: tiene >
+
+Sistema <|.. SistemaImpl: implementa
+SistemaImpl "1"-->"*" Usuario: -usuarioLista: List<Usuario>
+SistemaImpl "1"-->"*" Transaccion: -transaccionLista: List<Transaccion>
+SistemaImpl "1"-->"*" Libro: -libroLista: List<Libro>
+
+Usuario "1" -- "1" Inicio: ingresa >
+Inicio "1" -- "1" MenuPrincipal: accede >
+MenuPrincipal "1" -- "1" BuscarLibro: tiene >
+MenuPrincipal "1" -- "1" PrestarLibro: tiene >
+MenuPrincipal "1" -- "1" DevolverLibro: tiene >
+MenuPrincipal "1" -- "1" AgregarLibro: tiene >
+
+
+@enduml

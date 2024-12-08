@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="MenuPrincipal.MenuPrincipal">
+  <grid id="27dc6" binding="MenuPrincipal" layout-manager="GridLayoutManager" row-count="12" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties>
+      <background color="-7019533"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <component id="76e03" class="javax.swing.JButton" binding="buscarLibroButton">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Buscar Libro"/>
+        </properties>
+      </component>
+      <component id="2eab1" class="javax.swing.JButton" binding="prestarLibroButton" default-binding="true">
+        <constraints>
+          <grid row="5" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Prestar Libro"/>
+        </properties>
+      </component>
+      <component id="2aae5" class="javax.swing.JButton" binding="agregarLibroButton" default-binding="true">
+        <constraints>
+          <grid row="6" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Agregar Libro"/>
+        </properties>
+      </component>
+      <component id="313bc" class="javax.swing.JButton" binding="devolverLibroButton" default-binding="true">
+        <constraints>
+          <grid row="7" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Devolver Libro "/>
+        </properties>
+      </component>
+      <component id="33dee" class="javax.swing.JButton" binding="cerrarSesionButton" default-binding="true">
+        <constraints>
+          <grid row="9" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Cerrar Sesion"/>
+        </properties>
+      </component>
+      <hspacer id="b6af8">
+        <constraints>
+          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <hspacer id="dae44">
+        <constraints>
+          <grid row="6" column="4" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <vspacer id="a1f9e">
+        <constraints>
+          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="7dfce">
+        <constraints>
+          <grid row="10" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <component id="e04c" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font size="24" style="1"/>
+          <text value="Menú"/>
+        </properties>
+      </component>
+      <vspacer id="d178b">
+        <constraints>
+          <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="fe8f7">
+        <constraints>
+          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="e089c">
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="a64dd">
+        <constraints>
+          <grid row="11" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+    </children>
+  </grid>
+</form>

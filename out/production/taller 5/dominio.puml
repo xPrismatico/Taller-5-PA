@@ -1,0 +1,44 @@
+@startuml
+left to right direction
+skin rose
+
+entity Usuario {
+rut
+nombre
+apellido
+contrasenia
+}
+entity Libro {
+ISBN
+nombre libro
+autor
+categoria
+cantidad paginas
+stock
+}
+entity Transaccion {
+rut vendedor
+nombre vendedor
+apellido
+ISBN libro
+nombre libro
+tipo transaccion
+}
+entity transaccionLista {
+transaccion
+}
+entity libroLista {
+libro
+}
+
+Usuario "1"--"*" Transaccion: genera >
+Transaccion "1"--"*" Libro: tiene >
+Usuario "1"--"1"libroLista: gestiona >
+libroLista "1"--"*" Libro: tiene >
+transaccionLista "1"--"*" Transaccion: tiene >
+
+note "El usuario gestiona el inventario\nprestando, devolviendo, buscando,\no agregando libros" as n1
+n1 -- Usuario
+
+
+@enduml
